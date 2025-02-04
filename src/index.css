@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap');
+
+/* Base styles and CSS variables */
+@layer base {
+  :root {
+    /* Custom brand colors */
+    --gold: 43 65% 58%;      /* #C6A661 */
+    --brown: 24 15% 25%;     /* #4A3F35 */
+    --cream: 60 33% 91%;     /* #F5F5DC */
+    --green: 122 47% 33%;    /* #2E7D32 */
+    
+    /* Theme colors mapped to brand colors */
+    --background: var(--cream);
+    --foreground: var(--brown);
+    
+    --card: 60 33% 96%;
+    --card-foreground: var(--brown);
+    
+    --popover: 60 33% 96%;
+    --popover-foreground: var(--brown);
+    
+    --primary: var(--gold);
+    --primary-foreground: var(--brown);
+    
+    --secondary: var(--brown);
+    --secondary-foreground: var(--cream);
+    
+    --muted: 24 15% 90%;
+    --muted-foreground: 24 15% 40%;
+    
+    --accent: var(--gold);
+    --accent-foreground: var(--brown);
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 33% 96%;
+    
+    --border: var(--brown);
+    --input: var(--brown);
+    --ring: var(--gold);
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: var(--brown);
+    --foreground: var(--cream);
+    
+    --card: 24 15% 20%;
+    --card-foreground: var(--cream);
+    
+    --popover: 24 15% 20%;
+    --popover-foreground: var(--cream);
+    
+    --primary: var(--gold);
+    --primary-foreground: var(--brown);
+    
+    --secondary: var(--cream);
+    --secondary-foreground: var(--brown);
+    
+    --muted: 24 15% 30%;
+    --muted-foreground: 24 15% 80%;
+    
+    --accent: var(--gold);
+    --accent-foreground: var(--cream);
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--cream);
+    
+    --border: var(--cream);
+    --input: var(--cream);
+    --ring: var(--gold);
+  }
+}
+
+/* Base styles - Mobile First approach */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply antialiased;
+    direction: rtl;
+    font-size: 16px; /* Base font size */
+  }
+  
+  /* Responsive font sizes */
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  
+  body {
+    @apply bg-background text-foreground font-cairo;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c6a661' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Responsive headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-amiri font-bold;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+}
+
+/* Responsive layout utilities */
+@layer utilities {
+  /* Font families */
+  .font-cairo {
+    font-family: 'Cairo', sans-serif;
+  }
+  
+  .font-amiri {
+    font-family: 'Amiri', serif;
+  }
+
+  /* Responsive container padding */
+  .container {
+    @apply px-4 md:px-6 lg:px-8;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Responsive grid layouts */
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1rem;
+  }
+
+  /* Responsive spacing */
+  .section-spacing {
+    @apply py-6 md:py-8 lg:py-12;
+  }
+
+  .content-spacing {
+    @apply space-y-4 md:space-y-6 lg:space-y-8;
+  }
+
+  /* Responsive text */
+  .text-responsive {
+    @apply text-sm md:text-base lg:text-lg;
+  }
+
+  /* Responsive cards */
+  .card-responsive {
+    @apply p-4 md:p-6 lg:p-8 rounded-lg;
+  }
+
+  /* Gold gradient background */
+  .gold-gradient {
+    @apply bg-gradient-to-r from-[#C6A661] to-[#E3C388] hover:from-[#B39355] hover:to-[#D4B477];
+  }
+
+  /* Geometric pattern background */
+  .geometric-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c6a661' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Responsive navigation */
+@layer components {
+  /* Mobile navigation */
+  .mobile-nav {
+    @apply fixed inset-y-0 right-0 w-64 bg-card transform transition-transform duration-300 ease-in-out;
+    transform: translateX(100%);
+  }
+
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+
+  /* Responsive tables */
+  .table-responsive {
+    @apply w-full overflow-x-auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Responsive forms */
+  .form-responsive {
+    @apply max-w-sm md:max-w-md lg:max-w-lg mx-auto;
+  }
+
+  /* Responsive images */
+  .img-responsive {
+    @apply w-full h-auto object-cover;
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Media query breakpoints */
+@media (max-width: 640px) {
+  /* Small screens and mobile devices */
+  .sidebar {
+    @apply fixed inset-y-0 right-0 transform translate-x-full;
+    transition: transform 0.3s ease-in-out;
+    z-index: 50;
+  }
+
+  .sidebar.open {
+    @apply translate-x-0;
+  }
+
+  .main-content {
+    @apply mr-0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Medium screens and tablets */
+  .sidebar {
+    @apply w-20;
+  }
+
+  .sidebar-text {
+    @apply hidden;
+  }
+
+  .main-content {
+    @apply mr-20;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Large screens and desktops */
+  .sidebar {
+    @apply w-64;
+  }
+
+  .main-content {
+    @apply mr-64;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: none;
+  }
+
+  .print-content {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
